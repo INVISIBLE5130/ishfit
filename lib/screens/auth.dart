@@ -1,3 +1,6 @@
+import 'package:first_flutter_app/domain/user.dart';
+import 'package:first_flutter_app/services/auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +16,8 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
   String email;
   String password;
   bool showLogin = true;
+
+  AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -104,12 +109,50 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
       );
     }
 
-    void buttonAction() {
+    void loginButtonAction() async {
       email = emailController.text;
       password = passwordController.text;
 
-      emailController.clear();
-      passwordController.clear();
+      if(email.isEmpty || password.isEmpty) return;
+
+      User user = await authService.signInWithEmailAndPassword(email.trim(), password.trim());
+      if(user == null) {
+        Fluttertoast.showToast(
+            msg: "Can`t sign in you... Please check your email / password",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+        emailController.clear();
+        passwordController.clear();
+      }
+    }
+
+    void registerButtonAction() async {
+      email = emailController.text;
+      password = passwordController.text;
+
+      if(email.isEmpty || password.isEmpty) return;
+
+      User user = await authService.registerWithEmailAndPassword(email.trim(), password.trim());
+      if(user == null) {
+        Fluttertoast.showToast(
+            msg: "Can`t register you... Please check your email / password",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+        emailController.clear();
+        passwordController.clear();
+      }
     }
 
     Widget bottomWave() {
@@ -135,7 +178,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
           SizedBox(height: 50),
           (showLogin ? Column(
               children: <Widget>[
-                form('Login', buttonAction),
+                form('Login', loginButtonAction),
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: GestureDetector(
@@ -157,7 +200,7 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
             )
           : Column(
               children: <Widget>[
-                form('Register', buttonAction),
+                form('Register', registerButtonAction),
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: GestureDetector(

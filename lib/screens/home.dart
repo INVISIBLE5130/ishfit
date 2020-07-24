@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../domain/workout.dart';
@@ -27,6 +28,18 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('IshFit'),
           leading: Icon(Icons.fitness_center),
+          actions: <Widget>[
+            FlatButton.icon(
+                onPressed: (){
+                  AuthService().logOut();
+                },
+                icon: Icon(
+                  Icons.supervised_user_circle,
+                  color: Colors.white
+                ),
+                label: SizedBox.shrink()
+            )
+          ],
         ),
         body: WorkoutsList(),
       ),

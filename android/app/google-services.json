@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "893781998498",
+    "firebase_url": "https://ishfit.firebaseio.com",
+    "project_id": "ishfit",
+    "storage_bucket": "ishfit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893781998498:android:d9997378736c41fd9690fb",
+        "android_client_info": {
+          "package_name": "com.flutter.ishfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893781998498-qnrjbabtc1hqasi8qapof0cj53mrsou0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0-vzj4zyVBQDwU6lKNj5uNHOITtyDNmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893781998498-qnrjbabtc1hqasi8qapof0cj53mrsou0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
