@@ -1,7 +1,6 @@
 import 'package:first_flutter_app/domain/user.dart';
 import 'package:first_flutter_app/services/auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthorizationPage extends StatefulWidget {

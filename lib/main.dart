@@ -1,6 +1,5 @@
 import 'package:first_flutter_app/screens/landing.dart';
 import 'package:first_flutter_app/services/auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
