@@ -3,6 +3,7 @@ import 'package:first_flutter_app/components/activeWorkouts.dart';
 import 'package:first_flutter_app/components/workoutList.dart';
 import 'package:first_flutter_app/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'addWorkout.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -52,6 +53,14 @@ class _HomePage extends State<HomePage> {
         ),
         body: sectionIndex == 0 ? ActiveWorkouts() : WorkoutsList(),
         bottomNavigationBar: navBar,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.white,
+          foregroundColor: Theme.of(context).primaryColor,
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (ctx) => AddWorkout()));
+          },
+        ),
       ),
     );
   }
